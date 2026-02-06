@@ -1,0 +1,282 @@
+﻿*********************************************
+*** Exploratory questions - TEMPLATE SCRIPT
+*********
+This is a template script for a set block of exploratory questions to be included at the end of an experiment.
+These assess hypothesis awareness, influence awareness and reactance, demand awareness and compliance and whether participants think their data should be excluded.
+Can be used to examine effects of any of these on results, or as post-hoc exclusion criteria
+
+* Author: Matthias Raemaekers (matthias.raemaekers@ugent.be)
+************************************************
+
+*********** Data Storage *************
+
+<data>
+/ file = "ExploratoryQs.iqdat"
+/ separatefiles = true
+</data>
+
+**************  Structure  ******************
+
+<expt>
+/ blocks = [1 = ExploratoryQs]
+</expt>
+
+************* General Variables ****************
+
+<defaults>
+/ screencolor = white
+/ txcolor = black
+/ fontstyle = ("Arial", 5.00%)
+/ inputdevice = keyboard
+/ validkeys = (" ", "t")
+/ halign = center
+/ Com1BaudRate = 9600
+</defaults>
+
+
+************ Exploratory Questions in order of appearance **************
+
+************ Hypothesis awareness (open, then choice) *********************
+* Standard open answer format question to asses participants' idea of the hypothesis
+<text openQ>
+/ items = ("Which hypothesis do you believe the researchers wanted to test by conducting this study? In other words, what do you think they expect to find")
+/ position = (50,30)
+/ size = (90%, 40%)
+/ txcolor = black
+/ txbgcolor = white
+/ fontstyle = ("Courier New", 7.00%)
+</text>
+
+<openended hypothesis_awareness_open>
+/ inputdevice = mouse
+/ showmousecursor = true
+/ charlimit = 250
+/ position = (50,90)
+/ size = (90%, 40%)
+/ recorddata = true
+/ stimulusframes = [1 = openQ]
+</openended>
+
+*********** Correspondence to actual hypothesis ***********
+* Here, participants are provided the actual hypothesis
+* INSERT YOUR HYPOTHESIS IN THE QUESTION
+<radiobuttons hypothesis_awareness_closed>
+/caption = "We will tell you what our hypothesis for this study is: INSERT RESEARCH HYPOTHESIS HERE. Does this correspond to the hypothesis that you had in mind while you were doing the study? (Scroll down to respond)
+
+A: Yes, I already realized during the study that this was the hypothesis you were testing.
+
+B: No, during the study I thought you were testing a different hypothesis.
+
+C: During the study, I did not think at all about what your hypothesis might be.
+
+"
+/ options = ("A: Yes, I had this hypothesis in mind.", 
+			 "B: No, I had a different hypothesis in mind.", 
+			 "C: No, I did not think about any possible hypotheses")
+/required = true
+/orientation = vertical
+</radiobuttons>
+
+<surveypage hypothesis_awareness_closed>
+/ questions = [1 = hypothesis_awareness_closed]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+************** Contingency awareness *************
+* Participants choose between different possible contingencies that were manipulated
+* IMPORTANT: INSERT AT LEAST 2 PLAUSIBLE HYPOTHESES
+<radiobuttons contingency_awareness>
+/caption = "Please respond with the correct statement from the below list:
+
+A: In the most recent tasks in this experiment, ***INSERT OPTION A***
+
+B: In the most recent tasks in this experiment, ***INSERT OPTION B***
+
+C: I don’t know.
+
+"
+/ options = ("A: ***INSERT OPTION A IN SHORT FORMAT***", 
+			 "B: ***INSERT OPTION B IN SHORT FORMAT***", 
+			 "C: I don't know")
+			 
+/required = true
+/orientation = vertical
+</radiobuttons>
+
+<surveypage contingency_awareness>
+/ questions = [1 = contingency_awareness]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+************* Awareness of intent to influence & awareness *************
+* This question assesses whether participants were aware if and how the experimenter tried to influence their behavior
+* Here too, insert the contingency manipulation that was used
+<radiobuttons intent_to_influence>
+/caption = "At the start of the experiment, we first had you choose ***INSERT CONTINGENCY/MANIPULATION***. During the experiment, did you ever consider the possibility that we implemented this phase because we were trying to influence ***INSERT TARGET BEHAVIOR***? 
+A: Yes, I considered the possibility that you tried to influence ***INSERT TARGET BEHAVIOR***
+
+B: No, I did not consider the possibility that you tried to influence ***INSERT TARGET BEHAVIOR***
+
+C: I don’t know.”
+"
+/ options = ("A: Yes - I considered that you tried to influence my choices", 
+			 "B: No - I did not consider that you tried to influence my choices", 
+			 "C: I don't know")
+/required = true
+/orientation = vertical
+</radiobuttons>
+
+<surveypage intent_to_influence>
+/ questions = [1 = intent_to_influence]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+* This second question then looks at whether participants think that their behavior was ACTUALLY INFLUENCED
+* Here too, insert the contingency of interest that you manipulated
+<radiobuttons influence_awareness>
+/caption = "“Do you think that your choices were actually influenced by ***INSERT MANIPULATED CONTINGENCY***?
+
+A: Yes, I think my choices were influenced by ***INSERT CONTINGENCY***.
+
+B: No, I do not think my choices were influenced by ***INSERT CONTINGENCY***.
+
+C: I don’t know.
+
+"
+/ options = ("A: Yes - my choices were influenced by ***INSERT CONTINGENCY***", 
+			 "B: No - my choices were not influenced by ***INSERT CONTINGENCY***", 
+			 "C: I don't know")
+/required = true
+/orientation = vertical
+</radiobuttons>
+
+<surveypage influence_awareness>
+/ questions = [1 = influence_awareness]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+************ Demand compliance *************
+* These next questions assess whether participants (were aware of and) actively behaved in line with what they thought the experimenter's demand was, or whether they actively resisted this.
+* Again, fill in the contingency that was manipulated in the question below
+<radiobuttons demand_compliance>
+/caption = "In one part of the main study, you had to ***INSERT CONTINGENCY***. Were your choices based only on trying to pick what you thought we probably wanted you to pick?
+
+A: Yes, I based my choices on what you probably wanted me to choose. 
+
+B: No, I did not base my choices on what you probably wanted me to choose.
+
+C: I don’t know
+
+"
+
+/ options = ("A: Yes, I based myself on your demand", 
+			 "B: No, I did not base myself on your demand", 
+			 "C: I don't know")
+/required = true
+/orientation = vertical
+</radiobuttons>
+
+<surveypage demand_compliance>
+/ questions = [1 = demand_compliance]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+********** Reactance ***********
+
+<radiobuttons reactance>
+/caption = "Were your choices based only on actively resisting what you thought we probably wanted you to choose?
+
+A: Yes, I based my choices on resisting what you probably wanted to hear.
+
+B: No, I did not base my choices on resisting what you probably wanted to hear.
+
+C: I don’t know.”
+"
+/ options = ("A: Yes - I consciously resisted", 
+			 "B: No - I didn't consciously resist", 
+			 "C: I don't know")
+/required = true
+/orientation = vertical
+</radiobuttons>
+
+<surveypage reactance>
+/ questions = [1 = reactance]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+***************** Data Exclusion question *****************
+* This final question allows participants to indicate whether they feel their data should not be used, and if so, elaborate on the reason why!
+
+<radiobuttons exclude_data>
+/caption = "VERY IMPORTANT: Please answer the question below honestly (remember that your response will not affect the payment you receive).
+
+In your opinion, do you think we should include your answers in our analysis?
+
+There are many possible reasons why you might believe that we should not use your responses, including:
+
+· if you did not read the questions, just responded randomly, and/or lied during any part of the study
+
+· if your computer malfunctioned or you believe you encountered a bug during the study
+
+· if you were distracted at an important moment during the study
+
+· …
+
+If you choose 'No, do not my answers’, please fill in the accompanying text box to let us know why.
+
+"
+/ options = ("A: Yes, you can use my answers")
+/other = textbox.exclude_why
+/required = true
+/orientation = vertical
+/ correctresponse = ("A: Yes, you can use my answers")
+</radiobuttons>
+
+<textbox exclude_why>
+/ caption = "B: No, do not use my answers because:"
+/ minchars = 20
+/ multiline = true
+</textbox>
+
+
+<surveypage exclude_data>
+/ questions = [1 = exclude_data]
+/ showpagenumbers = false 
+/ showquestionnumbers = false
+</surveypage>
+
+************* Instructions *********************
+
+<instruct>  
+/ fontstyle = ("Arial", 3%)
+/ inputdevice = keyboard
+/ nextkey = (" ")
+/ nextlabel = "Press the spacebar to continue"
+/ prevlabel = "Press the 't' key to go back"
+/ prevkey = ("t")
+</instruct>
+
+<page instructions>
+The main part of the study is now finished. 
+^^In the next and final part, we will ask you some questions about the study itself and the responses that you gave while you were completing the study.
+^^Please read each question carefully before answering. 
+^^Your responses to these final questions will not affect the payment you receive for this study, so please be completely honest.
+</page>
+
+
+************ Block ******************
+
+<block ExploratoryQs>
+/ preinstructions = (instructions)
+/ screencolor = white
+/ trials = [1 = hypothesis_awareness_open; 2 = hypothesis_awareness_closed; 3= contingency_awareness; 4 = intent_to_influence; 5 = influence_awareness; 6 = demand_compliance; 7 = reactance; 8 = exclude_data]
+</block>
+
+
+
